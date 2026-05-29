@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Empower Health Strategies</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #034863;
+    --navy-dark: #022f42;
+    --navy-deeper: #01202e;
+    --teal-accent: #1a7a9a;
+    --teal-light: #4eacc5;
+    --mint: #e8f4f8;
+    --cream: #f5fafb;
+    --white: #ffffff;
+    --charcoal: #282828;
+    --mid-gray: #555;
+    --light-gray: #999;
+    --border: #d6eaf2;
+    --font-serif: 'Lora', Georgia, serif;
+    --font-sans: 'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--charcoal);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 80px;
+  }
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    gap: 32px;
+  }
+  .logo {
+    font-family: var(--font-serif);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    flex-shrink: 0;
+    letter-spacing: -0.3px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--navy-dark); transform: translateY(-1px); }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--teal-accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--teal-accent);
+    flex-shrink: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy-deeper);
+    padding: 130px 80px 130px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(26,122,154,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 30%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(78,172,197,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero .eyebrow { color: var(--teal-light); }
+  .hero .eyebrow::before { background: var(--teal-light); }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 500;
+    line-height: 1.18;
+    color: var(--white);
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal-light);
+  }
+  .hero-body {
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.72);
+    max-width: 620px;
+    margin-bottom: 44px;
+  }
+  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-outline-light {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-outline-light:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+  .btn-accent {
+    background: var(--teal-accent);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-accent:hover { background: #155f77; transform: translateY(-1px); }
+
+  /* ── SECTIONS ── */
+  .section { padding: 96px 80px; }
+  .section-inner { max-width: 1120px; margin: 0 auto; }
+  .section-cream { background: var(--cream); }
+  .section-white { background: var(--white); }
+
+  /* ── MEET MEREDITH ── */
+  .two-col {
+    display: grid;
+    gap: 64px;
+    align-items: start;
+  }
+  .two-col-40-60 { grid-template-columns: 40% 1fr; }
+  .two-col-60-40 { grid-template-columns: 1fr 40%; }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 500;
+    line-height: 1.22;
+    color: var(--charcoal);
+    letter-spacing: -0.3px;
+  }
+  h2 em { font-style: italic; color: var(--teal-accent); }
+  .body-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--mid-gray);
+    margin-bottom: 24px;
+  }
+  .bullet-list {
+    list-style: none;
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--charcoal);
+  }
+  .bullet-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal-accent);
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+  .text-link {
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    border-bottom: 1.5px solid var(--navy);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .text-link:hover { color: var(--teal-accent); border-color: var(--teal-accent); }
+  .text-link::after { content: ' →'; }
+
+  /* ── CARD GRID 3-col ── */
+  .card-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .card-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px 32px;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .section-cream .card { background: var(--white); }
+  .section-white .card { background: var(--cream); border-color: transparent; }
+  .card:hover { box-shadow: 0 8px 32px rgba(3,72,99,0.1); transform: translateY(-3px); }
+  .card-num {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--teal-accent);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .card-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid-gray);
+  }
+  .card-accent-bar {
+    position: absolute;
+    bottom: 0;
+    left: 32px;
+    right: 32px;
+    height: 2px;
+    background: var(--teal-accent);
+    border-radius: 0 0 1px 1px;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .card:hover .card-accent-bar { transform: scaleX(1); }
+
+  /* ── SECTION HEADING BLOCK ── */
+  .section-heading { margin-bottom: 0; }
+  .section-heading h2 { margin-top: 12px; }
+  .intro-copy {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--mid-gray);
+    max-width: 520px;
+    margin-top: 20px;
+  }
+
+  /* ── WHO I WORK WITH ── */
+  .list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .list-grid-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+  .list-grid-item:nth-last-child(-n+2) { border-bottom: none; }
+  .list-grid-item::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal-accent);
+    flex-shrink: 0;
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--navy);
+    padding: 110px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(26,122,154,0.2) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(78,172,197,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-inner {
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-band h2 {
+    color: var(--white);
+    font-size: clamp(28px, 3.5vw, 44px);
+    margin-bottom: 20px;
+  }
+  .cta-body {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-deeper);
+    padding: 72px 80px;
+  }
+  .footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1.4fr 1fr;
+    gap: 40px;
+  }
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .footer-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-col-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 18px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    max-width: 1120px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.55s; }
+
+  /* Scroll-reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav, .section, .hero, .cta-band, footer { padding-left: 40px; padding-right: 40px; }
+    .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav, .section, .hero, .cta-band, footer { padding-left: 24px; padding-right: 24px; }
+    .nav-links { display: none; }
+    .two-col-40-60, .two-col-60-40 { grid-template-columns: 1fr; gap: 40px; }
+    .card-grid-3, .card-grid-4 { grid-template-columns: 1fr; }
+    .list-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Empower Health Strategies</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#insights">Insights</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Patient Experience Strategy</p>
+    <h1>Digital health success starts with understanding what patients <em>really</em> want and need.</h1>
+    <p class="hero-body">Short 2–3 line positioning statement goes here. This should clearly explain who you help, what problem you solve, and why your perspective matters.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn-accent">Schedule a Consultation</a>
+      <a href="#services" class="btn-outline-light">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEET MEREDITH -->
+<section class="section section-white" id="about">
+  <div class="section-inner">
+    <div class="two-col two-col-40-60 reveal">
+      <div>
+        <p class="eyebrow">Meet Meredith</p>
+        <h2>Patients experience much more than what shows up in the data.</h2>
+      </div>
+      <div>
+        <p class="body-text">Short personal/professional intro copy goes here.</p>
+        <ul class="bullet-list">
+          <li>Lived experience navigating chronic and complex care</li>
+          <li>Professional experience across healthcare, advocacy, and digital health</li>
+          <li>Strategic support for teams designing patient-centered solutions</li>
+        </ul>
+        <a href="#" class="text-link">Read my story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE INSIGHT -->
+<section class="section section-cream">
+  <div class="section-inner reveal">
+    <div class="section-heading">
+      <p class="eyebrow">The Opportunity</p>
+      <h2>Care does not happen in isolated moments.<br>Patients experience <em>a journey</em>.</h2>
+      <p class="intro-copy">Short explanation of the central problem/opportunity goes here.</p>
+    </div>
+    <div class="card-grid-3">
+      <div class="card">
+        <span class="card-num">01</span>
+        <p class="card-title">Before care</p>
+        <p class="card-body">Scheduling, preparation, expectations, and access.</p>
+        <div class="card-accent-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-num">02</span>
+        <p class="card-title">During care</p>
+        <p class="card-body">Communication, trust, clarity, and decision-making.</p>
+        <div class="card-accent-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-num">03</span>
+        <p class="card-title">After care</p>
+        <p class="card-body">Follow-through, coordination, support, and next steps.</p>
+        <div class="card-accent-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-white" id="services">
+  <div class="section-inner reveal">
+    <div class="section-heading">
+      <p class="eyebrow">How I Help</p>
+      <h2>Turn patient insight into <em>better innovation</em> decisions.</h2>
+      <p class="intro-copy">Short services intro copy goes here.</p>
+    </div>
+    <div class="card-grid-4">
+      <div class="card">
+        <p class="card-title">Patient Experience Strategy</p>
+        <p class="card-body">Short outcome-focused description.</p>
+        <div class="card-accent-bar"></div>
+      </div>
+      <div class="card">
+        <p class="card-title">Patient Co-Design &amp; Engagement</p>
+        <p class="card-body">Short outcome-focused description.</p>
+        <div class="card-accent-bar"></div>
+      </div>
+      <div class="card">
+        <p class="card-title">PX Alignment &amp; Impact Audit</p>
+        <p class="card-body">Short outcome-focused description.</p>
+        <div class="card-accent-bar"></div>
+      </div>
+      <div class="card">
+        <p class="card-title">Mastermind Session</p>
+        <p class="card-body">Short outcome-focused description.</p>
+        <div class="card-accent-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I WORK WITH -->
+<section class="section section-cream">
+  <div class="section-inner">
+    <div class="two-col two-col-40-60 reveal">
+      <div>
+        <p class="eyebrow">Who I Work With</p>
+        <h2>Supporting teams shaping the future of <em>healthcare</em>.</h2>
+      </div>
+      <div class="list-grid">
+        <div class="list-grid-item">Digital health startups</div>
+        <div class="list-grid-item">Healthcare &amp; health tech companies</div>
+        <div class="list-grid-item">Medical device companies</div>
+        <div class="list-grid-item">Hospitals &amp; health systems</div>
+        <div class="list-grid-item">Innovation centers</div>
+        <div class="list-grid-item">Health insurers &amp; payers</div>
+        <div class="list-grid-item">Advocacy organizations</div>
+        <div class="list-grid-item">Public health teams</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner reveal">
+    <h2>Ready to create solutions patients trust, understand, and return to?</h2>
+    <p class="cta-body">Short CTA support copy goes here.</p>
+    <a href="#contact" class="btn-accent">Schedule a Consultation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <span class="footer-logo">Empower Health Strategies</span>
+      <p class="footer-desc">Short brand summary.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Explore</p>
+      <ul class="footer-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Services</p>
+      <ul class="footer-links">
+        <li><a href="#">Patient Experience Strategy</a></li>
+        <li><a href="#">Co-Design &amp; Engagement</a></li>
+        <li><a href="#">PX Audit</a></li>
+        <li><a href="#">Mastermind Session</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Contact</p>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@empowerhealth.com">Email</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Empower Health Strategies. All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
